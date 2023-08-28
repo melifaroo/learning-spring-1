@@ -11,8 +11,6 @@ import com.github.melifaroo.learning.spring.data.ReservationRepository;
 import com.github.melifaroo.learning.spring.data.Room;
 import com.github.melifaroo.learning.spring.data.RoomRepository;
 
-import antlr.debug.GuessingEvent;
-
 @Component
 public class AppStartupEvent implements ApplicationListener<ApplicationReadyEvent>{
 
