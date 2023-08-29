@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.melifaroo.learning.spring.data.Guest;
@@ -20,11 +19,15 @@ import com.github.melifaroo.learning.spring.data.RoomRepository;
 @Service
 public class ReservationService {
     
-    private RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
+    private final GuestRepository guestRepository;
+    private final ReservationRepository reservationRepository;
 
-    private GuestRepository guestRepository;
-
-    private ReservationRepository reservationRepository;
+    public ReservationService(RoomRepository roomRepository, GuestRepository guestRepository, ReservationRepository reservationRepository) {
+        this.guestRepository = guestRepository;
+        this.roomRepository = roomRepository;
+        this.reservationRepository = reservationRepository;
+    }
 
     public List<RoomReservation> getRoomReservationsForDate(Date date) {
         Iterable<Room> rooms = this.roomRepository.findAll();
@@ -63,21 +66,6 @@ public class ReservationService {
         });
 
         return roomReservations;
-    }
-
-    @Autowired
-    public void setRoomRepository(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
-   
-    @Autowired
-    public void setGuestRepository(GuestRepository guestRepository) {
-        this.guestRepository = guestRepository;
-    }
-
-    @Autowired
-    public void setReservationRepository(ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
     }
 
 }
