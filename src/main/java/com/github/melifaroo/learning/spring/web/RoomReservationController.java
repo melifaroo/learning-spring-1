@@ -17,8 +17,8 @@ import com.github.melifaroo.learning.spring.util.DateUtils;
 @RequestMapping("/Reservations")
 public class RoomReservationController {
 
-    private final ReservationService reservationService;
     private final DateUtils dateUtils;
+    private final ReservationService reservationService;
     
     public RoomReservationController(ReservationService reservationService, DateUtils dateUtils) {
         this.dateUtils = dateUtils;

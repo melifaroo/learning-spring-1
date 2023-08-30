@@ -29,6 +29,12 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
     }
 
+    public List<Guest> getAllGuests() {            
+        List<Guest> guests = new ArrayList<>();        
+        guests = guestRepository.findAll();
+        return guests;    
+    }
+
     public List<RoomReservation> getRoomReservationsForDate(Date date) {
         Iterable<Room> rooms = this.roomRepository.findAll();
         Map<Long, RoomReservation> roomReservationMap = new HashMap();
