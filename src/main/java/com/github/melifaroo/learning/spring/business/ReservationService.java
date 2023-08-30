@@ -29,6 +29,12 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
     }
 
+    public void addGuest(Guest guest) {   
+        if (guest == null)
+            throw new RuntimeException("Guest could not be null");
+        guestRepository.save(guest);
+    }
+
     public List<Guest> getAllGuests() {            
         List<Guest> guests = new ArrayList<>();        
         guests = guestRepository.findAll();
